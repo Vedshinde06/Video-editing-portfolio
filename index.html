@@ -3,588 +3,966 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartik - Video Editor Portfolio</title>
+    <meta name="description" content="Video editing portfolio for Kartik, featuring social media edits, motion-driven storytelling, and high-retention reels.">
+    <title>Kartik | Video Editor Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --panel-strong: rgba(13, 30, 48, 0.9);
+            --line: rgba(160, 213, 255, 0.18);
+            --text: #f4f7fb;
+            --muted: #9cb3ca;
+            --accent: #49dcb1;
+            --accent-2: #ff8f5c;
+            --accent-3: #7fc6ff;
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+            --radius-xl: 28px;
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --container: 1180px;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0a0a;
-            color: #fff;
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(73, 220, 177, 0.14), transparent 28%),
+                radial-gradient(circle at 85% 15%, rgba(127, 198, 255, 0.16), transparent 22%),
+                radial-gradient(circle at bottom right, rgba(255, 143, 92, 0.18), transparent 26%),
+                linear-gradient(180deg, #07111f 0%, #081728 44%, #060f1b 100%);
+            min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
 
         body::before {
-            content: '';
+            content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 0, 128, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(121, 40, 202, 0.15) 0%, transparent 50%);
-            animation: backgroundShift 15s ease-in-out infinite;
-            z-index: 0;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(circle at center, black 30%, transparent 85%);
+            pointer-events: none;
+            opacity: 0.45;
         }
 
-        @keyframes backgroundShift {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -30px) scale(1.1); }
-            66% { transform: translate(-30px, 50px) scale(0.95); }
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(4rem, 10vw, 7rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff0080, #ff6ec7, #00d4ff, #7928ca);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            animation: gradientFlow 4s ease infinite, textGlow 2s ease-in-out infinite;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-        }
-
-        @keyframes gradientFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes textGlow {
-            0%, 100% { 
-                filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.5));
-            }
-            50% { 
-                filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.8));
-            }
-        }
-
-        .tagline {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: #aaa;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            animation: fadeIn 1.5s ease-out 0.3s both;
-            letter-spacing: 0.05em;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .stats {
-            display: flex;
-            gap: 3rem;
-            justify-content: center;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            animation: fadeInUp 1.5s ease-out 0.5s both;
-        }
-
-        .stat {
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .stat:hover {
-            transform: scale(1.1);
-        }
-
-        .stat-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #00d4ff, #7928ca, #ff0080);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientFlow 3s ease infinite;
-        }
-
-        .stat-label {
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, #ff0080, #7928ca, #00d4ff);
-            background-size: 200% 200%;
-            color: white;
+        a {
+            color: inherit;
             text-decoration: none;
-            border-radius: 50px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            margin-top: 2rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 40px rgba(255, 0, 128, 0.4);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 1.5s ease-out 0.7s both;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
         }
 
-        .cta-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+        video {
+            display: block;
+            max-width: 100%;
         }
 
-        .cta-btn:hover::before {
-            left: 100%;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(255, 0, 128, 0.6);
-            background-position: 100% 0;
-        }
-
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
+        .shell {
+            width: min(var(--container), calc(100% - 2rem));
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #00d4ff, #fff, #ff0080);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientFlow 4s ease infinite;
-            letter-spacing: -0.02em;
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(6, 15, 27, 0.62);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .topbar-inner {
+            width: min(var(--container), calc(100% - 2rem));
+            margin: 0 auto;
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
-        .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #ccc;
-            max-width: 800px;
-            margin: 2rem auto;
-        }
-
-        .skills-grid {
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem 1.5rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 0, 128, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s;
-        }
-
-        .skill-card:hover::before {
-            left: 100%;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-15px) scale(1.05);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #ff0080;
-            box-shadow: 0 20px 60px rgba(255, 0, 128, 0.4);
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover .skill-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        .skill-name {
-            font-family: 'Orbitron', sans-serif;
+            place-items: center;
             font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 0.05em;
+            color: #06111d;
+            background: linear-gradient(135deg, var(--accent), var(--accent-3));
+            box-shadow: 0 10px 30px rgba(73, 220, 177, 0.24);
         }
 
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .video-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-
-        .video-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-            transition: left 0.7s;
-            pointer-events: none;
-        }
-
-        .video-card:hover::after {
-            left: 100%;
-        }
-
-        .video-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.4);
-            border-color: #00d4ff;
-        }
-
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.3);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .brand-text small {
             display: block;
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
         }
 
-        .upload-area {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: rgba(255, 255, 255, 0.03);
-            border: 2px dashed rgba(255, 255, 255, 0.3);
+        .nav-links {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            transition: color 180ms ease, transform 180ms ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--text);
+            transform: translateY(-1px);
+        }
+
+        .button {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.4s ease;
+            min-height: 48px;
+            padding: 0.9rem 1.35rem;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-weight: 700;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .button-primary {
+            color: #041019;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 18px 45px rgba(255, 143, 92, 0.2);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: var(--line);
+            color: var(--text);
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            padding: 4.5rem 0 2rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .hero-copy,
+        .hero-panel,
+        .section-card,
+        .video-card,
+        .contact-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+            border: 1px solid var(--line);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-copy {
+            padding: 2.3rem;
             position: relative;
             overflow: hidden;
         }
 
-        .upload-area::before {
-            content: '';
+        .hero-copy::after {
+            content: "";
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 0, 128, 0.1) 50%, transparent 70%);
-            background-size: 200% 200%;
-            animation: shimmer 3s ease-in-out infinite;
+            right: -80px;
+            bottom: -80px;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(127, 198, 255, 0.22), transparent 68%);
         }
 
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .upload-area:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #ff0080;
-            transform: scale(1.02);
-        }
-
-        .upload-area input {
-            display: none;
-        }
-
-        .upload-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-
-        .upload-text {
-            color: #888;
-            font-size: 0.9rem;
-        }
-
-        .video-info {
-            padding: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .video-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--accent);
+            font-size: 0.84rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero h1,
+        h2,
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero h1 {
+            margin-top: 1.25rem;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+            max-width: 10ch;
+        }
+
+        .accent-text {
+            color: var(--accent-2);
+        }
+
+        .hero-summary {
+            margin-top: 1.25rem;
+            max-width: 58ch;
+            color: #d4e1ef;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .stats-grid {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .stat {
+            padding: 1.1rem 1rem;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md);
+        }
+
+        .stat strong {
+            display: block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            color: var(--accent-3);
+        }
+
+        .stat span {
+            display: block;
+            margin-top: 0.35rem;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .hero-panel {
+            padding: 1.4rem;
+            display: grid;
+            gap: 1rem;
+            align-content: start;
+        }
+
+        .panel-label {
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .reel-card {
+            padding: 1.2rem;
+            border-radius: var(--radius-lg);
+            background: var(--panel-strong);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .reel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .reel-header strong {
+            font-size: 1rem;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            min-height: 30px;
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(73, 220, 177, 0.12);
+            border: 1px solid rgba(73, 220, 177, 0.2);
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 700;
             letter-spacing: 0.03em;
         }
 
-        .video-desc {
-            color: #888;
-            font-size: 0.9rem;
+        .reel-card p,
+        .section-lead,
+        .detail-copy,
+        .timeline-item p,
+        .video-meta p,
+        .contact-card p,
+        footer p {
+            color: var(--muted);
+            line-height: 1.7;
         }
 
-        .contact {
-            text-align: center;
+        .mini-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .mini-metrics div {
+            padding: 0.9rem;
+            border-radius: var(--radius-md);
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 4rem 2rem;
-            margin-top: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .contact h2 {
-            margin-bottom: 2rem;
+        .mini-metrics strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text);
         }
 
-        .email-link {
-            font-size: 1.5rem;
-            color: #00d4ff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
+        section {
+            padding: 1.5rem 0;
         }
 
-        .email-link:hover {
-            color: #ff0080;
-            transform: scale(1.05);
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-head h2 {
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .section-card {
+            padding: 2rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1.2rem;
+        }
+
+        .detail-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .detail-card {
+            padding: 1.2rem;
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .detail-card h3 {
+            margin-bottom: 0.45rem;
+            font-size: 1rem;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-chip {
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .skill-chip span {
+            display: inline-grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            margin-bottom: 0.85rem;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(73, 220, 177, 0.15), rgba(127, 198, 255, 0.15));
+            color: var(--accent-3);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .skill-chip h3 {
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .video-card {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, rgba(127, 198, 255, 0.12), rgba(255, 143, 92, 0.14));
+            overflow: hidden;
+        }
+
+        .video-frame::after {
+            content: "Preview";
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 999px;
+            background: rgba(4, 16, 25, 0.68);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .video-frame video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-meta {
+            padding: 1.2rem 1.2rem 1.35rem;
+        }
+
+        .video-topline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .video-topline h3 {
+            font-size: 1.1rem;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.32rem 0.62rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #dbe8f5;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .timeline-item {
+            padding: 1.25rem;
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .timeline-step {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-3));
+            color: #041019;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+        }
+
+        .contact-card {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         footer {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-            font-size: 0.9rem;
+            padding: 1rem 0 3rem;
         }
 
-        @media (max-width: 768px) {
-            .stats {
-                gap: 2rem;
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                gap: 1rem;
-            }
-            
-            .videos-grid {
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 700ms ease, transform 700ms ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .about-grid,
+            .contact-card {
                 grid-template-columns: 1fr;
+            }
+
+            .video-grid,
+            .timeline,
+            .skills-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .contact-links {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .topbar-inner {
+                padding: 0.85rem 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .hero {
+                padding-top: 2.5rem;
+            }
+
+            .hero-copy,
+            .hero-panel,
+            .section-card,
+            .contact-card {
+                padding: 1.35rem;
+            }
+
+            .stats-grid,
+            .video-grid,
+            .timeline,
+            .skills-list,
+            .mini-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .section-head {
+                align-items: start;
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>KARTIK</h1>
-            <p class="tagline">Video Editor & Content Creator</p>
-            
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number">250K+</div>
-                    <div class="stat-label">Total Views</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Months Experience</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Engagement Focus</div>
-                </div>
-            </div>
-            
-            <a href="#contact" class="cta-btn">Let's Create Together</a>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="#home" aria-label="Go to top">
+                <span class="brand-mark">K</span>
+                <span class="brand-text">
+                    Kartik
+                    <small>Video Editor</small>
+                </span>
+            </a>
+
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#process">Process</a>
+                <a href="#contact" class="button button-secondary">Book an Edit</a>
+            </nav>
         </div>
-    </section>
+    </header>
 
-    <section class="section">
-        <h2>About Me</h2>
-        <p class="about-text">
-            I am a video editor with 5+ months of experience in editing engaging social media content. I have created videos that have generated 250,000+ views across all platforms. I focus on fast-paced edits, smooth transitions, and high-retention storytelling to keep viewers hooked.
-        </p>
-    </section>
+    <main id="home" class="shell">
+        <section class="hero">
+            <div class="hero-grid">
+                <div class="hero-copy reveal is-visible">
+                    <div class="eyebrow">Short-form edits with retention in mind</div>
+                    <h1>Kartik builds videos that <span class="accent-text">hold attention.</span></h1>
+                    <p class="hero-summary">
+                        Social edits, motion-driven cuts, and clean pacing for creators and brands who want content that feels sharp, current, and built to perform.
+                    </p>
 
-    <section class="section">
-        <h2>Skills & Tools</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-icon">🎬</div>
-                <div class="skill-name">CapCut</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🎨</div>
-                <div class="skill-name">Photoshop</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🎞️</div>
-                <div class="skill-name">DaVinci Resolve</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">⚡</div>
-                <div class="skill-name">Premiere Pro</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">✨</div>
-                <div class="skill-name">After Effects</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🎵</div>
-                <div class="skill-name">Sound Design</div>
-            </div>
-        </div>
-    </section>
+                    <div class="hero-actions">
+                        <a href="#work" class="button button-primary">Watch Featured Work</a>
+                        <a href="mailto:guramkartik45@gmail.com" class="button button-secondary">Email Kartik</a>
+                    </div>
 
-    <section class="section">
-        <h2>Featured Work</h2>
-        <div class="videos-grid">
-            <div class="video-card">
-                <video controls preload="metadata">
-                    <source src="video1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-info">
-                    <div class="video-title">Sample Video 1</div>
-                    <div class="video-desc">High-energy social media edit with dynamic transitions</div>
+                    <div class="stats-grid" aria-label="Key stats">
+                        <div class="stat">
+                            <strong>250K+</strong>
+                            <span>Total views generated</span>
+                        </div>
+                        <div class="stat">
+                            <strong>5+</strong>
+                            <span>Months of editing experience</span>
+                        </div>
+                        <div class="stat">
+                            <strong>Fast</strong>
+                            <span>Pacing, hooks, and retention focus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="hero-panel reveal">
+                    <div class="panel-label">Current focus</div>
+                    <div class="reel-card">
+                        <div class="reel-header">
+                            <strong>Editing style</strong>
+                            <span class="pill">Short-form</span>
+                        </div>
+                        <p>
+                            Fast cuts, clean subtitles, smart sound design, and transitions that support the story instead of distracting from it.
+                        </p>
+                        <div class="mini-metrics">
+                            <div>
+                                <strong>Hooks first</strong>
+                                <span class="panel-label">First seconds matter</span>
+                            </div>
+                            <div>
+                                <strong>Platform-ready</strong>
+                                <span class="panel-label">Built for social feeds</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reel-card">
+                        <div class="reel-header">
+                            <strong>Ideal projects</strong>
+                            <span class="pill">Creator + Brand</span>
+                        </div>
+                        <p>
+                            Reels, highlight edits, talking-head content, product promos, and scroll-stopping cuts for creators building a stronger online presence.
+                        </p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-head reveal">
+                <div>
+                    <div class="eyebrow">About</div>
+                    <h2>Designed for attention, not just decoration.</h2>
+                </div>
+                <p class="section-lead">A focused portfolio built around social-first editing and watch-time friendly storytelling.</p>
+            </div>
+
+            <div class="about-grid">
+                <article class="section-card reveal">
+                    <p class="detail-copy">
+                        Kartik is a video editor creating energetic content for social platforms. The approach is simple: hook viewers quickly, keep motion intentional, and shape every cut so the message lands clearly.
+                    </p>
+                </article>
+
+                <div class="detail-grid">
+                    <article class="detail-card reveal">
+                        <h3>What stands out</h3>
+                        <p>Dynamic transitions, strong pacing, and edits that feel modern without becoming messy.</p>
+                    </article>
+                    <article class="detail-card reveal">
+                        <h3>Best fit</h3>
+                        <p>Creators, personal brands, and social campaigns that need content people will actually finish watching.</p>
+                    </article>
                 </div>
             </div>
-            <div class="video-card">
-                <video controls preload="metadata">
-                    <source src="video2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-info">
-                    <div class="video-title">Sample Video 2</div>
-                    <div class="video-desc">Fast-paced storytelling with trending audio</div>
-                </div>
-            </div>
-            <div class="video-card">
-                <video controls preload="metadata">
-                    <source src="video3.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-info">
-                    <div class="video-title">Sample Video 3</div>
-                    <div class="video-desc">Smooth transitions and color-graded perfection</div>
-                </div>
-            </div>
-            <div class="video-card">
-                <video controls preload="metadata">
-                    <source src="video4.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-info">
-                    <div class="video-title">Sample Video 4</div>
-                    <div class="video-desc">Viral-style edit with high retention hooks</div>
-                </div>
-            </div>
-            <div class="video-card">
-                <video controls preload="metadata">
-                    <source src="video5.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-info">
-                    <div class="video-title">Sample Video 5</div>
-                    <div class="video-desc">Engaging content with strategic pacing</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="contact">
-        <div class="contact">
-            <h2>Get In Touch</h2>
-            <p style="color: #aaa; margin-bottom: 2rem;">Ready to create something amazing? Let's talk!</p>
-            <a href="mailto:guramkartik45@gmail.com" class="email-link">guramkartik45@gmail.com</a>
-        </div>
-    </section>
+        <section aria-labelledby="tools-title">
+            <div class="section-head reveal">
+                <div>
+                    <div class="eyebrow">Tools</div>
+                    <h2 id="tools-title">Editing stack</h2>
+                </div>
+                <p class="section-lead">The original icon encoding issue is fixed here by replacing broken symbols with clean tool badges.</p>
+            </div>
 
-    <footer>
-        <p>&copy; 2026 Kartik - Video Editor. All rights reserved.</p>
+            <div class="skills-list">
+                <article class="skill-chip reveal">
+                    <span>CC</span>
+                    <h3>CapCut</h3>
+                    <p>Quick-turn social edits and platform-native formatting.</p>
+                </article>
+                <article class="skill-chip reveal">
+                    <span>PS</span>
+                    <h3>Photoshop</h3>
+                    <p>Thumbnail design, overlays, and visual cleanup.</p>
+                </article>
+                <article class="skill-chip reveal">
+                    <span>DR</span>
+                    <h3>DaVinci Resolve</h3>
+                    <p>Color work, timeline polish, and finishing passes.</p>
+                </article>
+                <article class="skill-chip reveal">
+                    <span>PR</span>
+                    <h3>Premiere Pro</h3>
+                    <p>Efficient editing workflows for polished deliverables.</p>
+                </article>
+                <article class="skill-chip reveal">
+                    <span>AE</span>
+                    <h3>After Effects</h3>
+                    <p>Motion accents, titles, and punchy visual moments.</p>
+                </article>
+                <article class="skill-chip reveal">
+                    <span>SD</span>
+                    <h3>Sound Design</h3>
+                    <p>Hits, risers, and rhythm that make edits feel finished.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="work">
+            <div class="section-head reveal">
+                <div>
+                    <div class="eyebrow">Portfolio</div>
+                    <h2>Featured work</h2>
+                </div>
+                <p class="section-lead">Five embedded local samples, now presented as stronger portfolio cards with clearer positioning.</p>
+            </div>
+
+            <div class="video-grid">
+                <article class="video-card reveal">
+                    <div class="video-frame">
+                        <video controls preload="metadata" playsinline>
+                            <source src="video1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-meta">
+                        <div class="video-topline">
+                            <h3>Energy Edit</h3>
+                            <span class="pill">Social Reel</span>
+                        </div>
+                        <p>High-energy social content cut to stay moving without losing clarity.</p>
+                        <div class="tag-row">
+                            <span class="tag">Fast pacing</span>
+                            <span class="tag">Transitions</span>
+                            <span class="tag">Retention</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card reveal">
+                    <div class="video-frame">
+                        <video controls preload="metadata" playsinline>
+                            <source src="video2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-meta">
+                        <div class="video-topline">
+                            <h3>Story Cut</h3>
+                            <span class="pill">Narrative Flow</span>
+                        </div>
+                        <p>Fast-paced storytelling shaped around momentum, structure, and trending audio.</p>
+                        <div class="tag-row">
+                            <span class="tag">Hook-led</span>
+                            <span class="tag">Audio sync</span>
+                            <span class="tag">Creator content</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card reveal">
+                    <div class="video-frame">
+                        <video controls preload="metadata" playsinline>
+                            <source src="video3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-meta">
+                        <div class="video-topline">
+                            <h3>Polished Finish</h3>
+                            <span class="pill">Color + Motion</span>
+                        </div>
+                        <p>Smooth transitions and a more refined visual finish for a premium feel.</p>
+                        <div class="tag-row">
+                            <span class="tag">Color polish</span>
+                            <span class="tag">Smooth cuts</span>
+                            <span class="tag">Clean visual flow</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card reveal">
+                    <div class="video-frame">
+                        <video controls preload="metadata" playsinline>
+                            <source src="video4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-meta">
+                        <div class="video-topline">
+                            <h3>Viral-style Promo</h3>
+                            <span class="pill">Short-form</span>
+                        </div>
+                        <p>An edit shaped around punchy intros, movement, and attention-preserving structure.</p>
+                        <div class="tag-row">
+                            <span class="tag">Scroll stop</span>
+                            <span class="tag">Promo pacing</span>
+                            <span class="tag">Impact moments</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card reveal">
+                    <div class="video-frame">
+                        <video controls preload="metadata" playsinline>
+                            <source src="video5.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-meta">
+                        <div class="video-topline">
+                            <h3>Audience Builder</h3>
+                            <span class="pill">High Retention</span>
+                        </div>
+                        <p>Engaging content built with strategic pacing and strong editorial rhythm.</p>
+                        <div class="tag-row">
+                            <span class="tag">Pacing control</span>
+                            <span class="tag">Sound design</span>
+                            <span class="tag">Engagement</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="section-head reveal">
+                <div>
+                    <div class="eyebrow">Workflow</div>
+                    <h2>How the edit comes together</h2>
+                </div>
+                <p class="section-lead">A simple process section makes the site feel more complete and helps clients understand what they are hiring.</p>
+            </div>
+
+            <div class="timeline">
+                <article class="timeline-item reveal">
+                    <span class="timeline-step">1</span>
+                    <h3>Hook and structure</h3>
+                    <p>The first pass shapes the strongest opening and builds a cleaner watch path through the content.</p>
+                </article>
+                <article class="timeline-item reveal">
+                    <span class="timeline-step">2</span>
+                    <h3>Motion and rhythm</h3>
+                    <p>Transitions, pacing, subtitles, and sound are tuned to keep energy high without overwhelming the viewer.</p>
+                </article>
+                <article class="timeline-item reveal">
+                    <span class="timeline-step">3</span>
+                    <h3>Final polish</h3>
+                    <p>Color, finishing details, and export choices are adjusted so the video looks platform-ready and intentional.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="contact-card reveal">
+                <div>
+                    <div class="eyebrow">Contact</div>
+                    <h2>Ready to create something strong?</h2>
+                    <p>Reach out for reels, short-form edits, or creator-focused content that needs sharper pacing and better presentation.</p>
+                </div>
+                <div class="contact-links">
+                    <a class="button button-primary" href="mailto:guramkartik45@gmail.com">guramkartik45@gmail.com</a>
+                    <a class="button button-secondary" href="#work">View samples</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="shell">
+        <p>&copy; <span id="year">2026</span> Kartik. Built as a focused single-page portfolio.</p>
     </footer>
+
+    <script>
+        const revealItems = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.14 });
+
+        revealItems.forEach((item) => observer.observe(item));
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
